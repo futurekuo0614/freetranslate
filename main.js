@@ -6,6 +6,11 @@ let subtitleLog = [];
 export async function translateTextToChinese(text, timestamp) {
   const OPENAI_API_KEY = window.OPENAI_API_KEY;
 
+  if (!OPENAI_API_KEY || OPENAI_API_KEY.includes("%")) {
+    console.error("未正確設定 OPENAI_API_KEY，請於 Vercel 的環境變數中配置");
+    return;
+  }
+
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {

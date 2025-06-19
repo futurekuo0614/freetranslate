@@ -2,17 +2,17 @@
 <html>
 <head>
   <meta charset="UTF-8" />
-  <title>Teams 日文即時字幕翻譯（安全版）</title>
+  <title>Teams 日文即時字幕翻譯（Vercel 部署版）</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Teams 日文即時字幕翻譯（免費+安全版）</h1>
+  <h1>Teams 日文即時字幕翻譯（免費安全部署版）</h1>
   <div id="subtitleDisplay"></div>
   <button id="startBtn">開始翻譯</button>
   <button onclick="exportSRT()">下載 SRT</button>
   <button onclick="exportTXT()">下載 TXT</button>
 
-  <!-- Vercel will inject this -->
+  <!-- Vercel 注入的 API 金鑰（部署後才會生效）-->
   <script>
     window.OPENAI_API_KEY = "%OPENAI_API_KEY%";
   </script>
@@ -20,9 +20,9 @@
   <script type="module">
     import { startSpeechRecognition } from './speech_recognition.js';
     import { saveSRT, saveSRTasTXT } from './srt_exporter.js';
+    document.getElementById("startBtn").addEventListener("click", startSpeechRecognition);
     window.exportSRT = saveSRT;
     window.exportTXT = saveSRTasTXT;
-    document.getElementById("startBtn").addEventListener("click", startSpeechRecognition);
   </script>
 </body>
 </html>
