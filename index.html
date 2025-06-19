@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>免費即時翻譯字幕</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Teams 日文即時字幕翻譯（免費版）</h1>
+  <div id="subtitleDisplay"></div>
+  <button onclick="start()">開始翻譯</button>
+  <button onclick="exportSRT()">下載 SRT</button>
+  <button onclick="exportTXT()">下載 TXT</button>
+  <script type="module">
+    import { startSpeechRecognition } from './speech_recognition.js';
+    import { saveSRT, saveSRTasTXT } from './srt_exporter.js';
+    window.start = startSpeechRecognition;
+    window.exportSRT = saveSRT;
+    window.exportTXT = saveSRTasTXT;
+  </script>
+</body>
+</html>
