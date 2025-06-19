@@ -8,13 +8,14 @@
 <body>
   <h1>Teams 日文即時字幕翻譯（免費版）</h1>
   <div id="subtitleDisplay"></div>
-  <button onclick="start()">開始翻譯</button>
+  <button id="startBtn">開始翻譯</button>
   <button onclick="exportSRT()">下載 SRT</button>
   <button onclick="exportTXT()">下載 TXT</button>
   <script type="module">
     import { startSpeechRecognition } from './speech_recognition.js';
     import { saveSRT, saveSRTasTXT } from './srt_exporter.js';
-    window.start = startSpeechRecognition;
+
+    document.getElementById("startBtn").addEventListener("click", () => startSpeechRecognition());
     window.exportSRT = saveSRT;
     window.exportTXT = saveSRTasTXT;
   </script>
