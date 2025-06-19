@@ -1,13 +1,18 @@
-# 免費版即時翻譯字幕（日文 → 中文）
+# 安全版：免費日文→中文即時翻譯字幕（Vercel 環境變數注入）
 
-## 修正版（修正 process 與全域變數錯誤）
+## 📌 說明
 
-### 功能
-- 使用瀏覽器語音辨識（Chrome 專屬）
-- 呼叫 OpenAI GPT-3.5 翻譯為中文
-- 顯示字幕、可下載 SRT / TXT
+- 使用瀏覽器語音辨識（Web Speech API）
+- 翻譯由 GPT-3.5 完成
+- 不含任何硬編碼金鑰，透過 Vercel `Environment Variables` 注入
 
-### 使用方式
-1. 將 api_key.js 中填入您的 GPT API 金鑰
-2. 上傳至 GitHub，部署至 Vercel 或本地測試
-3. 開啟瀏覽器 → 點「開始翻譯」
+## ✅ 使用方式
+
+1. 將本專案上傳至 GitHub
+2. 到 Vercel 建立新專案並連結 GitHub
+3. 在 Vercel 設定專案環境變數：
+   ```
+   Name: OPENAI_API_KEY
+   Value: sk-xxxxxxxxxxxxxxxxxxxxxx
+   ```
+4. 自動部署即可開始使用
